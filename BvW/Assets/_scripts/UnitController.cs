@@ -9,6 +9,7 @@ public class UnitController : MonoBehaviour {
     public bool canshoot = false;
     public GameObject bullet;
     public Vector3 bullet_spawn_vector;
+    public int belongs_to_player;
     
     // Use this for initialization
 	void Start () {
@@ -54,6 +55,7 @@ public class UnitController : MonoBehaviour {
 
     public void SpawnBullet()
     {
-        Instantiate(bullet, bullet_spawn_vector, transform.rotation);
+        PhotonNetwork.Instantiate("bullet", bullet_spawn_vector, transform.rotation, 0);
+        //Instantiate(bullet, bullet_spawn_vector, transform.rotation);
     }
 }

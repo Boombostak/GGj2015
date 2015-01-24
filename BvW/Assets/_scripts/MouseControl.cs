@@ -12,11 +12,13 @@ public class MouseControl : MonoBehaviour {
     public GameObject stopcursor;
     public GameObject selected_unit;
     public UnitController uc;
+    public int belongs_to_player;
+    public int player_no;
 
     
     // Use this for initialization
 	void Start () {
-	
+        
 	}
 	
 	// Update is called once per frame
@@ -80,6 +82,11 @@ public class MouseControl : MonoBehaviour {
         }
         Debug.DrawRay(ray.origin, ray.direction * raycastlength, Color.yellow);
 	
+    }
+
+    public void SetPlayerNumber()
+    {
+        player_no = gameObject.GetComponent<Networking>().player_number;
     }
 
 }
