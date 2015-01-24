@@ -3,10 +3,11 @@ using System.Collections;
 
 public class UnitController : MonoBehaviour {
 
-    public float movespeed = 1;
-    public float firerate = 1;
+    public float movespeed = 1f;
+    public float firerate = 1f;
     public bool canmove = false;
     public bool canshoot = false;
+    public GameObject bullet;
     
     // Use this for initialization
 	void Start () {
@@ -16,13 +17,16 @@ public class UnitController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
-        Shoot();
+        //Shoot();
+
 	}
 
     public void Move()
     {
+        
         if(canmove==true)
         {
+            CancelInvoke("SpawnBullet");
             transform.Translate(Vector3.forward * movespeed * Time.deltaTime);
         }
         
@@ -30,12 +34,24 @@ public class UnitController : MonoBehaviour {
 
     public void Shoot()
     {
-        canshoot = true;
+        
+        if (canshoot==true)
+        {
+            CancelInvoke("SpawnBullet");
+            InvokeRepeating("SpawnBullet", firerate, firerate);
+            
+        }
     }
 
     public void Stop()
     {
         canmove = false;
         canshoot = false;
+        CancelInvoke("SpawnBullet");
+    }
+
+    public void SpawnBullet()
+    {
+        Instantiate(bullet, transform.position, transform.rotation);
     }
 }

@@ -33,16 +33,17 @@ public class MouseControl : MonoBehaviour {
                 {
                     GameObject movetarget = Instantiate(movecursor, hit.point, Quaternion.identity) as GameObject;
                     selected_unit.transform.LookAt(movetarget.transform);
+                    uc.canshoot = false;
                     uc.canmove = true;
-                    //movemode = false;
                 }
 
                 if (Input.GetMouseButtonDown(0) && (attackmode==true) && (selected_unit!=null))
                 {
                     GameObject movetarget = Instantiate(attackcursor, hit.point, Quaternion.identity) as GameObject;
                     selected_unit.transform.LookAt(movetarget.transform);
-                    
-                    attackmode = false;
+                    uc.canmove = false;
+                    uc.canshoot = true;
+                    uc.Shoot();
                 }
             }
 
@@ -59,11 +60,13 @@ public class MouseControl : MonoBehaviour {
 
         if (Input.GetButtonDown("move"))
         {
+            attackmode = false;
             movemode = true;
         }
 
         if (Input.GetButtonDown("attack"))
         {
+            movemode = false;
             attackmode = true;
         }
 
@@ -71,6 +74,7 @@ public class MouseControl : MonoBehaviour {
         {
             movemode = false;
             attackmode = false;
+            uc.Stop();
         }
         Debug.DrawRay(ray.origin, ray.direction * raycastlength, Color.yellow);
 	
