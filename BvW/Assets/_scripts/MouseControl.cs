@@ -35,6 +35,7 @@ public class MouseControl : MonoBehaviour {
                     selected_unit.transform.LookAt(movetarget.transform);
                     uc.canshoot = false;
                     uc.canmove = true;
+                    movemode = false;
                 }
 
                 if (Input.GetMouseButtonDown(0) && (attackmode==true) && (selected_unit!=null))
@@ -44,6 +45,7 @@ public class MouseControl : MonoBehaviour {
                     uc.canmove = false;
                     uc.canshoot = true;
                     uc.Shoot();
+                    attackmode = false;
                 }
             }
 

@@ -7,6 +7,7 @@ public class BulletBehaviour : MonoBehaviour {
     public float countup = 0;
     public float lifespan = 3;
     
+    
     // Use this for initialization
 	void Start () {
 	
@@ -21,4 +22,18 @@ public class BulletBehaviour : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
+
+   
+        
+    
+   
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "unit")
+        {
+            Destroy(other.gameObject.transform.parent.gameObject);
+        }
+        Destroy(this.gameObject);
+    }
 }

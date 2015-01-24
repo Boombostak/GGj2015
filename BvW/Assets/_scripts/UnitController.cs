@@ -8,6 +8,7 @@ public class UnitController : MonoBehaviour {
     public bool canmove = false;
     public bool canshoot = false;
     public GameObject bullet;
+    public Vector3 bullet_spawn_vector;
     
     // Use this for initialization
 	void Start () {
@@ -38,6 +39,7 @@ public class UnitController : MonoBehaviour {
         if (canshoot==true)
         {
             CancelInvoke("SpawnBullet");
+            bullet_spawn_vector = (this.transform.GetChild(0).transform.position);
             InvokeRepeating("SpawnBullet", firerate, firerate);
             
         }
@@ -52,6 +54,6 @@ public class UnitController : MonoBehaviour {
 
     public void SpawnBullet()
     {
-        Instantiate(bullet, transform.position, transform.rotation);
+        Instantiate(bullet, bullet_spawn_vector, transform.rotation);
     }
 }
