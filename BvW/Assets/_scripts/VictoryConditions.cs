@@ -41,9 +41,9 @@ public class VictoryConditions : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        white_units = white_spawn.GetComponent<spawn_point_controller>().white_count;
+        white_units = GameObject.FindGameObjectsWithTag("unit1").Length;
         Debug.Log(white_units);
-        black_units = black_spawn.GetComponent<spawn_point_controller>().black_count;
+        black_units = GameObject.FindGameObjectsWithTag("unit2").Length;
         Debug.Log(black_units);
 
         if ((white_units <= 0) && (Time.time > safe_time))
