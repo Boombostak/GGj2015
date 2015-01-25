@@ -14,7 +14,9 @@ public class VictoryConditions : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         white_spawn = GameObject.Find("1spawn");
+        Debug.Log(white_spawn + "is your white spawn point!");
         black_spawn = GameObject.Find("2spawn");
+        Debug.Log(black_spawn + "is your black spawn point!");
 	}
 	
 	// Update is called once per frame
