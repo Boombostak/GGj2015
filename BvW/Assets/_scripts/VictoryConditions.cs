@@ -24,7 +24,8 @@ public class VictoryConditions : MonoBehaviour {
         {
             Debug.Log("No whitespawn assigned.");
         }
-        if (GameObject.Find("1spawn") != null)
+        
+        if (GameObject.Find("2spawn") != null)
         {
             black_spawn = GameObject.Find("2spawn");
             Debug.Log(black_spawn + "is your black spawn point!");
@@ -41,7 +42,9 @@ public class VictoryConditions : MonoBehaviour {
 	void Update () {
 
         white_units = white_spawn.GetComponent<spawn_point_controller>().white_count;
+        Debug.Log(white_units);
         black_units = black_spawn.GetComponent<spawn_point_controller>().black_count;
+        Debug.Log(black_units);
 
         if ((white_units <= 0) && (Time.time > safe_time))
         {
