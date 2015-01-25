@@ -85,6 +85,7 @@ public class Networking : MonoBehaviour {
 
     public void GUIstart()
     {
+        PhotonNetwork.automaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings("0.1");
     }
 
