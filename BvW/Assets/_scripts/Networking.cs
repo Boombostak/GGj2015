@@ -34,7 +34,7 @@ public class Networking : MonoBehaviour {
                 Destroy(this.gameObject);
         }
 
-        PhotonNetwork.ConnectUsingSettings("0.1");
+        
         mc = gameObject.GetComponent<MouseControl>();
     }
 
@@ -67,7 +67,7 @@ public class Networking : MonoBehaviour {
     {
         Debug.Log("Can't join random room!");
         PhotonNetwork.CreateRoom(null);
-        
+        PhotonNetwork.maxConnections = 2;
     }
 
     void OnJoinedRoom()
@@ -81,5 +81,22 @@ public class Networking : MonoBehaviour {
             player_number = 2;
         }
         mc.SetPlayerNumber();
+    }
+
+    public void GUIstart()
+    {
+        PhotonNetwork.ConnectUsingSettings("0.1");
+    }
+
+    public void GUILaunch()
+    {
+        if (PhotonNetwork.playerList.Length == 2)
+        {
+            PhotonNetwork.LoadLevel(1);
+        }
+        else
+        {
+            Debug.Log(PhotonNetwork.playerList.Length);
+        }
     }
 }
