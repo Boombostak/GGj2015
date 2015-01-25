@@ -51,5 +51,10 @@ public class VictoryConditions : MonoBehaviour {
         victorymessage.SetActive(true);
     }
 
+    public void AdvanceLevel()
+    {
+        PhotonNetwork.LoadLevel(Application.loadedLevel + 1);
+    }
+
 
 }
