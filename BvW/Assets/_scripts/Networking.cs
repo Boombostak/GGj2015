@@ -96,7 +96,7 @@ public class Networking : MonoBehaviour {
         }
         else
         {
-            Debug.Log(PhotonNetwork.playerList.Length);
+            Debug.Log("Current players:"+PhotonNetwork.playerList.Length);
         }
     }
 }
