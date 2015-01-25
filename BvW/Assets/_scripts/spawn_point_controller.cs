@@ -21,7 +21,7 @@ public class spawn_point_controller : MonoBehaviour {
 
         network_controller = FindObjectOfType<Networking>().gameObject;
         
-        count_up = respawn_time - 1;
+        //count_up = respawn_time - 1;
 	}
 	
 	// Update is called once per frame
