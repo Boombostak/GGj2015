@@ -10,6 +10,8 @@ public class VictoryConditions : MonoBehaviour {
     public GameObject black_spawn;
     public GameObject network_controller;
     public GameObject victorymessage;
+    public GameObject whitevic;
+    public GameObject blackvic;
     
     // Use this for initialization
 	void Start () {
@@ -61,16 +63,18 @@ public class VictoryConditions : MonoBehaviour {
     public void WhiteVictory()
     {
         Debug.Log("White Victory!");
-        network_controller = FindObjectOfType<Networking>().gameObject;
-        victorymessage = GameObject.Find("whitevic");
+        //network_controller = FindObjectOfType<Networking>().gameObject;
+        //victorymessage = GameObject.Find("whitevic");
+        victorymessage = whitevic;
         victorymessage.SetActive(true);
     }
 
     public void BlackVictory()
     {
         Debug.Log("Black Victory!");
-        network_controller = FindObjectOfType<Networking>().gameObject;
-        victorymessage = GameObject.Find("blackvic");
+        //network_controller = FindObjectOfType<Networking>().gameObject;
+        //victorymessage = GameObject.Find("blackvic");
+        victorymessage = blackvic;
         victorymessage.SetActive(true);
     }
 
