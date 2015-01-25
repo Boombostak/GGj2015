@@ -11,6 +11,9 @@ public class MouseControl : MonoBehaviour {
     public GameObject attackcursor;
     public GameObject stopcursor;
     public GameObject selected_unit;
+    public Material su_original_mat;
+    public Material su_temporary_mat_white;
+    public Material su_temporary_mat_black;
     public UnitController uc;
     public int belongs_to_player;
     public int player_no;
@@ -90,7 +93,21 @@ public class MouseControl : MonoBehaviour {
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if (selected_unit!=null)
+                    {
+                        selected_unit.transform.GetChild(1).renderer.material = su_original_mat;
+                    }
+                    
+                    
                     selected_unit = hit.collider.gameObject.transform.parent.gameObject;
+
+                    if (su_original_mat!=selected_unit.transform.GetChild(1).renderer.material)
+                    {
+                        su_original_mat = selected_unit.transform.GetChild(1).renderer.material;
+                    }
+                    
+                    
+                    selected_unit.transform.GetChild(1).renderer.material = su_temporary_mat_white;
                     uc = selected_unit.GetComponent<UnitController>();
                 }
                 
@@ -100,7 +117,21 @@ public class MouseControl : MonoBehaviour {
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if (selected_unit != null)
+                    {
+                        selected_unit.transform.GetChild(1).renderer.material = su_original_mat;
+                    }
+
+
                     selected_unit = hit.collider.gameObject.transform.parent.gameObject;
+
+                    if (su_original_mat != selected_unit.transform.GetChild(1).renderer.material)
+                    {
+                        su_original_mat = selected_unit.transform.GetChild(1).renderer.material;
+                    }
+
+
+                    selected_unit.transform.GetChild(1).renderer.material = su_temporary_mat_black;
                     uc = selected_unit.GetComponent<UnitController>();
                 }
 
@@ -154,6 +185,25 @@ public class MouseControl : MonoBehaviour {
     public void SetPlayerNumber()
     {
         player_no = gameObject.GetComponent<Networking>().player_number;
+    }
+
+    public void GUIMoveMode()
+    {
+        attackmode = false;
+        movemode = true;
+    }
+
+    public void GUIAttackMode()
+    {
+        movemode = false;
+        attackmode = true;
+    }
+
+    public void GUIStop()
+    {
+        movemode = false;
+        attackmode = false;
+        uc.Stop();
     }
 
 }
