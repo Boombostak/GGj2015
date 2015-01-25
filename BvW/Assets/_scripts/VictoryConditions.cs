@@ -87,7 +87,15 @@ public class VictoryConditions : MonoBehaviour {
 
     public void AdvanceLevel()
     {
-        PhotonNetwork.LoadLevel(Application.loadedLevel + 1);
+        if (Application.loadedLevel==3)
+        {
+            PhotonNetwork.LoadLevel(1);
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel(Application.loadedLevel + 1);
+        }
+        
     }
 
 
