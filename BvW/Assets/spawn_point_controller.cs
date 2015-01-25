@@ -11,6 +11,8 @@ public class spawn_point_controller : MonoBehaviour {
     public float respawn_time = 1;
     public float count_up;
     public GameObject network_controller;
+    public int black_count;
+    public int white_count;
 
     
     
@@ -29,11 +31,13 @@ public class spawn_point_controller : MonoBehaviour {
 
         if (player_number == 1)
 	{
-        unit_count = GameObject.FindGameObjectsWithTag("unit1").Length;
+        white_count = GameObject.FindGameObjectsWithTag("unit1").Length;
+        unit_count = white_count;
 	}
         if (player_number == 2)
         {
-            unit_count = GameObject.FindGameObjectsWithTag("unit2").Length;
+            black_count = GameObject.FindGameObjectsWithTag("unit2").Length;
+            unit_count = black_count;
         }
         
         count_up = count_up + Time.deltaTime;

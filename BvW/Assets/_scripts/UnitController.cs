@@ -77,5 +77,10 @@ public class UnitController : MonoBehaviour {
         {
             this.Stop();
         }
+
+        if (other.tag == "deadly")
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

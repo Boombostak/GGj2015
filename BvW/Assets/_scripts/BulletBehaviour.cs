@@ -42,6 +42,12 @@ public class BulletBehaviour : MonoBehaviour {
         }
         Destroy(this.gameObject);
 
+        if (other.tag == "deadly")
+        {
+            Destroy(other.gameObject.transform.parent.gameObject);
+        }
+        Destroy(this.gameObject);
+
         if (other.tag == "wall")
         {
             Destroy(this.gameObject);
