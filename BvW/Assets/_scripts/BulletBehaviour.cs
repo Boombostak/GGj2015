@@ -27,13 +27,25 @@ public class BulletBehaviour : MonoBehaviour {
         
     
    
-    
+    //weird syntax???
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "unit")
+        if (other.tag == "unit1")
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
         Destroy(this.gameObject);
+
+        if (other.tag == "unit2")
+        {
+            Destroy(other.gameObject.transform.parent.gameObject);
+        }
+        Destroy(this.gameObject);
+
+        if (other.tag == "wall")
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 }

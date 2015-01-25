@@ -14,15 +14,50 @@ public class MouseControl : MonoBehaviour {
     public UnitController uc;
     public int belongs_to_player;
     public int player_no;
+    public GameObject network_controller;
 
+    private static MouseControl _instance;
+    public static MouseControl instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<MouseControl>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+
+
+    }
     
     // Use this for initialization
 	void Start () {
+
+        network_controller = FindObjectOfType<Networking>().gameObject;
         
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        belongs_to_player = network_controller.GetComponent<Networking>().player_number;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -51,7 +86,7 @@ public class MouseControl : MonoBehaviour {
                 }
             }
 
-            if ((hit.collider.tag == "unit") && (movemode ==false) && (attackmode==false))
+            if ((hit.collider.tag == ("unit1") && (movemode ==false) && (attackmode==false) && (player_no == 1)))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -60,6 +95,38 @@ public class MouseControl : MonoBehaviour {
                 }
                 
             }
+
+            if ((hit.collider.tag == ("unit2") && (movemode == false) && (attackmode == false) && (player_no == 2)))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    selected_unit = hit.collider.gameObject.transform.parent.gameObject;
+                    uc = selected_unit.GetComponent<UnitController>();
+                }
+
+            }
+
+            //shoot through enemy pawns to hit terrain? This needs work.
+            /*
+            if ((hit.collider.tag == ("unit1") && (movemode == false) && (attackmode == false) && (player_no == 1)))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    selected_unit = hit.collider.gameObject.transform.parent.gameObject;
+                    uc = selected_unit.GetComponent<UnitController>();
+                }
+
+            }
+
+            if ((hit.collider.tag == ("unit1") && (movemode == false) && (attackmode == false) && (player_no == 1)))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    selected_unit = hit.collider.gameObject.transform.parent.gameObject;
+                    uc = selected_unit.GetComponent<UnitController>();
+                }
+
+            }*/
         }
 
         if (Input.GetButtonDown("move"))
