@@ -58,4 +58,24 @@ public class UnitController : MonoBehaviour {
         PhotonNetwork.Instantiate("bullet", bullet_spawn_vector, transform.rotation, 0);
         //Instantiate(bullet, bullet_spawn_vector, transform.rotation);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "wall")
+        {
+
+            Debug.Log("hit a wall");
+            this.Stop();
+        }
+
+        if (other.tag == "unit1")
+        {
+            this.Stop();
+        }
+
+        if (other.tag == "unit2")
+        {
+            this.Stop();
+        }
+    }
 }
