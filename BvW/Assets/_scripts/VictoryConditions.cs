@@ -65,8 +65,8 @@ public class VictoryConditions : MonoBehaviour {
         Debug.Log("White Victory!");
         //network_controller = FindObjectOfType<Networking>().gameObject;
         //victorymessage = GameObject.Find("whitevic");
-        victorymessage = whitevic;
-        victorymessage.SetActive(true);
+        whitevic.SetActive(true);
+        //victorymessage.SetActive(true);
     }
 
     public void BlackVictory()
@@ -74,8 +74,8 @@ public class VictoryConditions : MonoBehaviour {
         Debug.Log("Black Victory!");
         //network_controller = FindObjectOfType<Networking>().gameObject;
         //victorymessage = GameObject.Find("blackvic");
-        victorymessage = blackvic;
-        victorymessage.SetActive(true);
+        blackvic.SetActive(true); 
+        //victorymessage.SetActive(true);
     }
 
     public void AdvanceLevel()
