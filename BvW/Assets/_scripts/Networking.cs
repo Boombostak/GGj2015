@@ -56,11 +56,11 @@ public class Networking : MonoBehaviour {
     void OnJoinedLobby()
     {
         PhotonNetwork.JoinRandomRoom();
-        if (player_number!=1)
+        /*if (player_number!=1)
         {
             
             mc.SetPlayerNumber();
-        }
+        }*/
     }
 
     void OnPhotonRandomJoinFailed()

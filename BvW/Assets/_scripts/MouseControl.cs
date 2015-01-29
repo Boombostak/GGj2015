@@ -89,6 +89,8 @@ public class MouseControl : MonoBehaviour {
                 }
             }
 
+            //selection material change
+            
             if ((hit.collider.tag == ("unit1") && (movemode ==false) && (attackmode==false) && (player_no == 1)))
             {
                 if (Input.GetMouseButtonDown(0))

@@ -52,22 +52,23 @@ public class CameraController : MonoBehaviour
         else
         {
             // Move camera if mouse pointer reaches screen borders
-            if (Input.mousePosition.x < ScrollArea)
+            //added conditions to allow windowed play
+            if ((Input.mousePosition.x < ScrollArea) && (Input.mousePosition.x >= 0))
             {
                 translation += Vector3.right * -ScrollSpeed * Time.deltaTime;
             }
 
-            if (Input.mousePosition.x >= Screen.width - ScrollArea)
+            if ((Input.mousePosition.x >= Screen.width - ScrollArea) && (Input.mousePosition.x < Screen.width))
             {
                 translation += Vector3.right * ScrollSpeed * Time.deltaTime;
             }
 
-            if (Input.mousePosition.y < ScrollArea)
+            if ((Input.mousePosition.y < ScrollArea) && (Input.mousePosition.y >= 0))
             {
                 translation += Vector3.forward * -ScrollSpeed * Time.deltaTime;
             }
 
-            if (Input.mousePosition.y > Screen.height - ScrollArea)
+            if ((Input.mousePosition.y >= Screen.height - ScrollArea) && (Input.mousePosition.y < Screen.height))
             {
                 translation += Vector3.forward * ScrollSpeed * Time.deltaTime;
             }
